@@ -109,13 +109,29 @@ def remove_vowels(x):
 # leading and trailing whitespace should be removed
 # everything should be lowercase
 # spaces should be replaced with underscores
-x = "Sally Kemper "
-def normalize_name(x):
-        return " ".join([x.lower().strip().replace(" ", "_") for x in x])
+def remove_spec_chars(s):
+    for c in ['$', '%', '@']:
+        return c
+
+def normalize_name(s):
+    return remove_spec_char(s).lower().strip().replace(" ", "_")
+
+# def normalize_name(x):
+#         return " ".join([x.lower().strip().replace(" ", "_") for x in x])
        
-normalize_name(x)
+# normalize_name(x)
 
 # 11. Write a function named cumsum that accepts a list of numbers and returns a list that is the cumulative sum of the numbers in the list.
 def cumsum(x):
-   new_list = []
-   for x in x:
+    sum = [x[0]]
+    for sum in x[1:]:
+        sum.append(sum[-1]+x)
+    return sum
+cumsum([1, 1, 1])
+
+# def cumsum(x):
+#     list = []
+#     list = [sum(list(i + 1)) for x in range(0, len(list))]
+#     return x.append(list)
+    
+# cumsum([1, 2, 3])
