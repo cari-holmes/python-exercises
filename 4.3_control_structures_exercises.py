@@ -2,7 +2,7 @@
 
 # A. prompt the user for a day of the week, print out whether the day is Monday or not
 today_is = input("Enter a day of the week")
-ptiny(today_is)
+
 today = "Thursday"
 if today=="Thursday":
     print("It is almost the weekend.")
@@ -10,8 +10,8 @@ else:
     print("I am not sure what day it is.")
 
 # B. prompt the user for a day of the week, print out whether the day is a weekday or a weekend
-day = ("What is the day of the week?")
-print(day)
+day = input("What is the day of the week?")
+
 day_of_the_week = "Sunday"
 if day_of_the_week == "Thursday":
     print("It is a weekday.")
@@ -75,3 +75,30 @@ for num in range(1,10):
 
 # C. break and continue
 ## Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to continue prompting the user if they enter invalid input. (Hint: use the isdigit method on strings to determine this). Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
+odd_number = ""
+if odd_number.isdigit() and int(odd_number) %2==0 and int(odd_number) > 1 and int(odd_number) < 50:
+    break
+
+# D. The input function can be used to prompt for input and use that input in your python code. Prompt the user to enter a positive number and write a loop that counts from 0 to that number. (Hints: first make sure that the value the user entered is a valid number, also note that the input function returns a string, so you'll need to convert this to a numeric type.)
+positive_num = ""
+while True:
+    if positive_num.isdigit() and int(positive_number) > 0:
+        break
+for i in range(int(positive_number)+1):
+    print(i)
+    
+# E. Write a program that prompts the user for a positive integer. Next write a loop that prints out the numbers from the number the user entered down to 1.
+my_num = ""
+while True:
+    if my_num.isdigit() and int(my_num) > 0:
+        break
+for i in range(int(my_num), 0, -1):
+    print(i)
+
+# 3. Fizzbuzz
+## One of the most common interview questions for entry-level programmers is the FizzBuzz test. Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
+""" Write a program that prints the numbers from 1 to 100.
+For multiples of three print "Fizz" instead of the number
+For the multiples of five print "Buzz".
+For numbers which are multiples of both three and five print "FizzBuzz".
+"""
