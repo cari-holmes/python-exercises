@@ -8,9 +8,9 @@ def menu():
     print("How would you like to proceed?")
     print("""
     1) View current balance
-    2) Make a withdrawl (record a debit)
-    3) Make a deposit (record a credit)
-    4) View savings account 
+    2) Make a withdrawl 
+    3) Make a deposit 
+    4) View savings  
     5) Exit\n""")
 
 
@@ -23,9 +23,9 @@ def write_balance(new_balance):
     f = open("checkbook.txt", "w")
     f.write(str(new_balance))
 
-def make_deposit(funds):
+def make_deposit(deposit_amount):
     current_amount = read_balance()
-    new_balance = int(current_amount) + int(funds)
+    new_balance = int(current_amount) + int(deposit_amount)
     write_balance(new_balance)
 
 def make_withdraw(withdraw_amount):
@@ -33,31 +33,60 @@ def make_withdraw(withdraw_amount):
     new_balance = int(current_amount) - int(withdraw_amount)
     write_balance(new_balance)
 
+def read_savings():
+    f = open("savings.txt", "r")
+    balance = f.read()
+    return balance
+
+def write_savings(new_balance):
+    f = open("savings.txt", "w")
+    f.write(str(new_balance))
+
 def main():
     menu()
     option = input(prompt)
+    print("\n")
     if option == "1":
         print("Your current balance is "+ read_balance())  
-        input("Press 'Enter' to continue")
+        print("\n")
+        input("Press 'ENTER' to continue.")
         main()  
+
     elif option == "2":
         withdraw_amount = input("How much do you wish to withdraw?\n")
         make_withdraw(withdraw_amount)
-        print("Your new Balance is " + read_balance())
-        # prompt user yes or no
+        print("Your new balance is " + read_balance())
+        print("\n")
+        input("Press 'ENTER' to continue.")
+        main()
+
     elif option == "3":
         deposit_amount = input("How much to do you wish to deposit?\n")
         make_deposit(deposit_amount)
-        print("The new balance is " + read_balance())
+        print("Your new balance is " + read_balance())
+        print("\n")
+        input("Press 'ENTER' to continue.")
+        main()
+
     elif option == "4":
-        print("You have $500 in your saving account.\n")
+        print("Your current balance is " + read_savings() + " in your savings.")
+        print("\n")
+        input("Press 'ENTER' to continue.")
+        main()
+
     elif option == "5":
         print("Thank you, have a great day!\n")
+
     else:
         print("Sorry, that is an invalid option.\n")
+        main()
 
 main()
 
+### things to do:
+    # make amounts floats
+    # transfer from checking to savings
+    # 
 
 # print("How would you like to proceed?")
 # print("""
@@ -68,9 +97,6 @@ main()
 # 5) Exit\n""")
 ### transfer between accounts
 
-### loop to stay on menu unless I exit application
-### how to add prompts after the if statement
-### 
 
 # ~~~~~~~ Python checkbook project: ~~~~~~~~
 
