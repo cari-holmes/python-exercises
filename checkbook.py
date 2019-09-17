@@ -1,36 +1,63 @@
 print("~~ Welcome to your checkbook! ~~\n")
 
+
 prompt = '> Your option: '
 
-### 
 
-print("How would you like to proceed?")
-print("""
-1) View current balance
-2) Make a withdrawl (record a debit)
-3) Make a deposit (record a credit)
-4) View savings account 
-5) Exit\n""")
+def menu():
+    print("How would you like to proceed?")
+    print("""
+    1) View current balance
+    2) Make a withdrawl (record a debit)
+    3) Make a deposit (record a credit)
+    4) View savings account 
+    5) Exit\n""")
 
-### add in function of how to proceed between each if statement
 
-option = input(prompt)
-if option == "1":
-    print("Your current balance is $3,500\n")
-elif option == "2":
-    print("How much do you wish to withdraw?\n")
-    # prompt user yes or no
-elif option == "3":
-    print("How much to do you wish to deposit?\n")
-elif option == "4":
-    print("You have $500 in your saving account.\n")
-elif option == "5":
-    print("Thank you, have a great day!\n")
-else:
-    print("Sorry, that is an invalid option.\n")
+def read_balance():
+    f = open("checkbook.txt", "r")
+    bal = f.read()
+    return bal
 
-# pick an option 1 thru 5
-# i need to make a loop to go back to main menu after each prompt response
+def write_balance(new_balance):
+    f = open("checkbook.txt", "w")
+    f.write(str(new_balance))
+
+def make_deposit(funds):
+    current_amount = read_balance()
+    new_balance = int(current_amount) + int(funds)
+    write_balance(new_balance)
+
+def make_withdraw(withdraw_amount):
+    current_amount = read_balance()
+    new_balance = int(current_amount) - int(withdraw_amount)
+    write_balance(new_balance)
+
+def main():
+    menu()
+    option = input(prompt)
+    if option == "1":
+        print("Your current balance is "+ read_balance())  
+        input("Press 'Enter' to continue")
+        main()  
+    elif option == "2":
+        withdraw_amount = input("How much do you wish to withdraw?\n")
+        make_withdraw(withdraw_amount)
+        print("Your new Balance is " + read_balance())
+        # prompt user yes or no
+    elif option == "3":
+        deposit_amount = input("How much to do you wish to deposit?\n")
+        make_deposit(deposit_amount)
+        print("The new balance is " + read_balance())
+    elif option == "4":
+        print("You have $500 in your saving account.\n")
+    elif option == "5":
+        print("Thank you, have a great day!\n")
+    else:
+        print("Sorry, that is an invalid option.\n")
+
+main()
+
 
 # print("How would you like to proceed?")
 # print("""
@@ -39,6 +66,7 @@ else:
 # 3) Make a deposit (record a credit)
 # 4) View savings account 
 # 5) Exit\n""")
+### transfer between accounts
 
 ### loop to stay on menu unless I exit application
 ### how to add prompts after the if statement
