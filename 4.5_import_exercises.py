@@ -27,7 +27,7 @@ it.combinations('abc, '123')
 from json import load
 print("ok")
 # importing the entire json module
-# import json 
+import json 
 
 # to read the file I saved in order to work with it
 with open('profiles.json', 'r' ) as file:
@@ -50,22 +50,73 @@ n_active_users = len(active_users)
 n_active_users
 
 # Number of inactive users
+inactive_users = [profile for profile in profiles if profile['isActive'] == False]
+n_inactive_users = len(inactive_users)
+n_inactive_users
+# or
+[profile['isActive'] == False for profile in profiles]
+
 
 # Grand total of balances for all users
+type('balance')
 [profile['balance'] for profile in profiles]
 
+def change_balance_type(b):
+    return float(b[1:].replace(",", ""))
+
+balance = [change_balance_type(profile['balance']) for profile in profiles]
+bal = sum(balance)
+bal
+
 # Average balance per user
+average = sum(balance) / len(balance)
+average
 
 # User with the lowest balance
-min(profiles, key=lamda profile: handle_balance(profile['balance']))
+lowest_balance_user = profiles[0]
+for user in profiles [1:]:
+    if change_balance_type(user['balance']) < change_balance_type(lowest_balance_user['balance']):
+        lowest_balance_user = user
+lowest_balance_user
+
+### min([profiles, key=lamda profiles: change_balance_type(profile['balance'])])
 
 # User with the highest balance
+highest_balance_user = profiles[0]
+for user in profiles [1:]:
+    if change_balance_type(user['balance']) > change_balance_type(highest_balance_user['balance']):
+        highest_balance_user = user
+highest_balance_user
 
 # Most common favorite fruit
+from collections import Counter
+print('ok')
+# Counter is capitalized, keeps track of how many times an item is counted
+Counter(profile['favoriteFruit'] for profile in profiles)
 
+# or 
+
+fruit_count = {}
+for profile in profiles:
+    fruit = profile['favoriteFruit']
+    if fruit in fruit_count:
+        fruit_count[fruit] += 1
+    else: 
+        fruit_count[fruit] = 1
+fruit_count
+
+max(fruit_count)
 # Least most common favorite fruit
 
-# Total number of unread messages for all users
-# .isdigit()
+min(fruit_count)
 
+# Total number of unread messages for all users
+# .isdigit() prints True if all characters are digits
 # .items() 
+type(greeting)
+greeting = [profile['greeting'] for profile in profiles]
+def pull_digit(string):
+    return int(''.join([char for char in string if char.isdigit()]))
+num_unread_messages = [pull_digit(greeting) for greeting in greeting]
+num_unread_messages
+sum(num_unread_messages)
