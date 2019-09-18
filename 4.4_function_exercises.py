@@ -38,16 +38,20 @@ is_word("good morning")
 is_word("atta boy")
 is_word("woah")
 
-# def cap_con(word):
-#     if cap_con(word[0]):
-#         return word.capitalize()
-#     return word
-# cap_con(cat)
+def cap_con(word):
+    if is_consonant(word[0]):
+        return word.capitalize()
+    return word
+cap_con('cat')
 
 # 5. Define a function named calculate_tip. It should accept a tip percentage (a number between 0 and 1) and the bill total, and return the amount to tip.
 def calculate_tip(percentage, bill):
+    if percentage > 1:
+        percentage /= 100
+# using the division operator, percentage = percentage / 100
     amount_tip = percentage * bill
     return amount_tip
+calculate_tip(.3, 25)
 
 assert calculate_tip(.2, 20) == 4.0
 
@@ -61,6 +65,9 @@ assert calculate_tip(.2, 20) == 4.0
 def apply_discount(org_price,discount_price):
     discount_amount = org_price * discount_price
     return org_price - discount_price
+
+apply_discount(150, .35)
+
 
 # full_price = 32.00
 # def apply_discount(x):
@@ -103,6 +110,8 @@ def remove_vowels(x):
     for let in x:
         if x in vowels:
             return x.replace(x, "")
+
+remove_vowels('hello')
 
 # # 10. Define a function named normalize_name. It should accept a string and return a valid python identifier, that is:
 # anything that is not a valid python identifier should be removed

@@ -63,11 +63,11 @@ while i > 5:
     i -= 5
 
 # B. For Loops
-## * Write some code that prompts the user for a number, then shows a multiplication table up through 10 for that number
-
+### * Write some code that prompts the user for a number, then shows a multiplication table up through 10 for that number
+num = input('enter a number')
 num=int(num)
 for num in range(1,11):
-    print(num)
+    print(print(str(i)+"*"+str(num)+"="+str(i*num))
 
 ## Create a for loop that uses print to create the output shown below.
 for num in range(1,10):
@@ -76,14 +76,17 @@ for num in range(1,10):
 # C. break and continue
 ## Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to continue prompting the user if they enter invalid input. (Hint: use the isdigit method on strings to determine this). Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
 odd_number = ""
-if odd_number.isdigit() and int(odd_number) %2==0 and int(odd_number) > 1 and int(odd_number) < 50:
-    break
+while True:
+    if odd_number.isdigit() and int(odd_number) %2==0 and int(odd_number) > 1 and int(odd_number) < 50:
+        break
+
 
 # D. The input function can be used to prompt for input and use that input in your python code. Prompt the user to enter a positive number and write a loop that counts from 0 to that number. (Hints: first make sure that the value the user entered is a valid number, also note that the input function returns a string, so you'll need to convert this to a numeric type.)
 positive_num = ""
 while True:
     if positive_num.isdigit() and int(positive_number) > 0:
         break
+
 for i in range(int(positive_number)+1):
     print(i)
     
