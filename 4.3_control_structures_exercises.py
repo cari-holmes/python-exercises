@@ -133,18 +133,3 @@ while True:
     user_choice=input("Should we continue ?")
     if user_choice=="no":
         break
-
-### Bonus 
-# 5. Convert given number grades into letter grades.
-'''Prompt the user for a numerical grade from 0 to 100.
-Display the corresponding letter grade.
-Prompt the user to continue.
-Assume that the user will enter valid integers for the grades.
-The application should only continue if the user agrees to.
-Grade Ranges:
-
-A : 100 - 88
-B : 87 - 80
-C : 79 - 67
-D : 66 - 60
-F : 59 - 0'''
