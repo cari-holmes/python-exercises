@@ -105,3 +105,46 @@ For multiples of three print "Fizz" instead of the number
 For the multiples of five print "Buzz".
 For numbers which are multiples of both three and five print "FizzBuzz".
 """
+
+for x in range(1, 101):
+    if x % 3 == 0 and x % 5 == 0:
+        print('FizzBuzz')
+    elif x % 5 == 0:
+        print('Buzz')
+    elif x % 3 == 0: 
+        print('Fizz')
+    else:
+        print(str(x))
+
+## 4. Display a table of powers.
+'''Prompt the user to enter an integer.
+Display a table of squares and cubes from 1 to the value entered.
+Ask if the user wants to continue.
+Assume that the user will enter valid data.
+Only continue if the user agrees to.'''
+
+while True:
+    num_test=int(input("Please enter an integer"))
+    for i in range(1,num_test+1):
+        if i==1:
+            print('number  | squared  | cubed')
+            print('__  |  __  |  __')
+    print(i,'  |', i**2,'  |',i**3)
+    user_choice=input("Should we continue ?")
+    if user_choice=="no":
+        break
+
+### Bonus 
+# 5. Convert given number grades into letter grades.
+'''Prompt the user for a numerical grade from 0 to 100.
+Display the corresponding letter grade.
+Prompt the user to continue.
+Assume that the user will enter valid integers for the grades.
+The application should only continue if the user agrees to.
+Grade Ranges:
+
+A : 100 - 88
+B : 87 - 80
+C : 79 - 67
+D : 66 - 60
+F : 59 - 0'''
