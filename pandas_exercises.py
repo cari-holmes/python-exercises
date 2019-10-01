@@ -33,8 +33,8 @@ len(count_models)
 ###D. Do automatic or manual cars have better miles per gallon?
 mpg['mpg'] = (mpg.cty + mpg.hwy) / 2
 
-.contains['auto']
-.contains['manual']
+automatic = mpg[mpg.trans.str.contains('auto')]
+manual = mpg[mpg.trans.str.contains('manual')]
 
 #2. Joining and Merging
 # Copy the users and roles dataframes from the examples above. 
@@ -150,13 +150,17 @@ print(chipotle)
 chipotle.head(10)
 
 #A. What is the total price for each order?
-chipotle["total_price"] = chipotle.
+chipotle['item_price']
+chipotle['item_price'] = item_price.str.replace('$','').str.replace('.','').astype(float)
+chipotle["total_price"] = chipotle['item_price'] * chipotle['quantity']
 
 orders['bill'] = orders.drink.map(prices) + orders.meal.map(prices)
 
 orders.tail(5)
 #B. What are the most popular 3 items?
-
+new_chipotle = chipotle.groupby('item_price').agg('sum').sort_values(by='total_price', ascending=False).head(3)
+new_chipotle.reset_index()
 
 #C. Which item has produced the most revenue?
-
+new_chipotle = chipotle.groupby('item_price').agg('sum').sort_values(by='total_price', ascending=False).head(1)
+new_chipotle.reset_index()
